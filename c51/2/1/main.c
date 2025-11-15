@@ -1,5 +1,3 @@
-/* 2.1 点亮一个 LED = C:\\code_fleetinglore\c51\2\1 */
-
 #include <REGX52.H>
 
 /**
