@@ -1,5 +1,3 @@
-/* 2.4 LED 流水灯 另一种方法 = C:\\code_fleetinglore\c51\2\4 */
-
 #include <REGX52.H>
 
 /// 无符号整数类型的别名

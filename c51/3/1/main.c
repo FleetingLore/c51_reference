@@ -1,5 +1,3 @@
-/* 3.1 控制 LED 亮灭 = C:\\code_fleetinglore\c51\3\1 */
-
 #include <REGX52.H>
 
 void main() {

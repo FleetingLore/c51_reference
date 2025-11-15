@@ -1,5 +1,3 @@
-/* 3.2 控制 LED 状态 = C:\\code_fleetinglore\c51\3\2 */
-
 #include <REGX52.H>
 
 /// 无符号整数类型的别名

@@ -1,5 +1,3 @@
-/* 3.4 控制 LED 移位 = C:\\code_fleetinglore\c51\3\4 */
-
 #include <REGX52.H>
 
 /// 无符号整数类型的别名

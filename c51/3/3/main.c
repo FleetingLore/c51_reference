@@ -1,5 +1,3 @@
-/* 3.3 控制 LED 显示二进制 = C:\\code_fleetinglore\c51\3\3 */
-
 #include <REGX52.H>
 
 /// 无符号整数类型的别名
