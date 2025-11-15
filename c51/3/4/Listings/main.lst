@@ -1,0 +1,117 @@
+C51 COMPILER V9.60.7.0   MAIN                                                              11/16/2025 03:07:19 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main.lst) OB
+                    -JECT(.\Objects\main.obj)
+
+line level    source
+
+   1          /* 3.4 控制 LED 移位 = C:\\code_fleetinglore\c51\3\4 */
+   2          
+   3          #include <REGX52.H>
+   4          
+   5          /// 无符号整数类型的别名
+   6          #define uint unsigned int
+   7          #define uchar unsigned char
+   8          
+   9          /// 延时参数
+  10          const uint AWAIT = 20;
+  11          
+  12          /// 创世灯位
+  13          const uchar ROOT = 0x01;
+  14          
+  15          /**
+  16           * [毫秒级延时函数]
+  17           * 
+  18           * 只是用循环来简单模拟，缺陷是对于不同的设备表现不一致。
+  19          */
+  20          void delay_ms(uint t) {
+  21   1          uchar j;
+  22   1          while(t--) {
+  23   2              j = 85;
+  24   2              while (j--);
+  25   2          }
+  26   1      }
+  27          
+  28          void main() {
+  29   1          /// 初始化，偏移为 `0`
+  30   1          uchar ip = 0;
+  31   1          
+  32   1          /// 初始化，让 `D1` 一开始就亮
+  33   1          P2 = ~(ROOT << ip);
+  34   1              
+  35   1          while (1) {   
+  36   2              /* 按 `K_1` 左移 */ {
+  37   3                  if (P3_1 == 0) {
+  38   4                      /* 消抖 */ {
+  39   5                          // 抖动
+  40   5                          delay_ms(AWAIT);
+  41   5                          
+  42   5                          // 按住时
+  43   5                          while (P3_1 == 0);
+  44   5                          
+  45   5                          // 松手后
+  46   5                          delay_ms(AWAIT);
+  47   5                      }
+  48   4                      
+  49   4                      /* 饱和返回 */
+  50   4                      if (ip == 0) {
+  51   5                          continue;
+  52   5                      }
+  53   4                      
+  54   4                      /* 点亮灯位左移 */ {
+C51 COMPILER V9.60.7.0   MAIN                                                              11/16/2025 03:07:19 PAGE 2   
+
+  55   5                          ip--;
+  56   5                          P2 = ~(ROOT << ip);
+  57   5                      }
+  58   4                  }
+  59   3              }
+  60   2              
+  61   2              /* 按 `K_2` 右移 */ {
+  62   3                  if (P3_0 == 0) {
+  63   4                      /* 消抖 */ {
+  64   5                          // 抖动
+  65   5                          delay_ms(AWAIT);
+  66   5                          
+  67   5                          // 按住时
+  68   5                          while (P3_0 == 0);
+  69   5                          
+  70   5                          // 松手后
+  71   5                          delay_ms(AWAIT);
+  72   5                      }
+  73   4      
+  74   4                  
+  75   4                      /* 饱和返回 */
+  76   4                      if (ip == 7) {
+  77   5                          continue;
+  78   5                      }
+  79   4                      /**
+  80   4                      * 若操作直接面向 `P2`，此处可能会有问题，我也不知道是什么情况�
+             -�
+  81   4                      */
+  82   4                  
+  83   4                      /* 点亮灯位右移 */ {
+  84   5                          ip++;
+  85   5                          P2 = ~(ROOT << ip);
+  86   5                      }
+  87   4                  }
+  88   3              }
+  89   2          }
+  90   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    104    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

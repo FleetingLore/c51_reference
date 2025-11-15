@@ -1,0 +1,51 @@
+C51 COMPILER V9.60.7.0   MAIN                                                              11/16/2025 01:06:53 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main.lst) OB
+                    -JECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          
+   3          /**
+   4           * `P2` 这个接口和开发板上的一堆 LED 灯是连着的
+   5           *
+   6           * 直接设置 `P2` 的值，就能控制灯
+   7          */
+   8          void main() {
+   9   1          P2 = 0xFE; // 点亮一个灯
+  10   1          
+  11   1          /**江协的视频说，`main()` 会反复执行所以灯才没有灭
+  12   1           *
+  13   1           * 笔者认为这个说法是错误的，所以没有加上最后的发散循环
+  14   1           * 
+  15   1           * 所谓的发散循环，就是
+  16   1           * 
+  17   1           * ```c
+  18   1           * while (1) {}
+  19   1           * ```
+  20   1           * 
+  21   1           * 或者写作
+  22   1           * 
+  23   1           * ```c
+  24   1           * while (1);
+  25   1           * ```
+  26   1          */
+  27   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      4    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
