@@ -25,7 +25,22 @@
 <body>
     <div class="container">
         <div class="code-preview" data-title="C:\\code_fleetinglore\c51\3\1\main.c" data-language="c">
-void main() {}
+/* 3.1 控制 LED 亮灭 = C:\\code_fleetinglore\c51\3\1 */
+
+#include &lt;REGX52.H&gt;
+
+void main() {
+    while (1) {
+        // `P3_1` 控制 `K1`，`P3_0` 控制 `K2`
+        if (P3_1 == 0 || P3_0 == 0) {
+            /// 如果按下 `K1` 或 `K2`，灯就亮
+            P2_0 = 0;
+        } else {
+            /// 松开，灯就灭
+            P2_0 = 1;
+        }
+    }
+}
         </div>
     </div>
 </body>
