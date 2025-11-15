@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>代码预览组件</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-c.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+    <script src="code-preview.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>代码预览组件示例</h1>
+        
+        <!-- C语言代码示例 -->
+        <div class="code-preview" data-title="C语言示例" data-language="c">
+#include &lt;stdio.h&gt;
+
+int main() {
+    // 打印Hello World
+    printf("Hello, World!\n");
+    
+    // 计算并输出两个数的和
+    int a = 5, b = 3;
+    int sum = a + b;
+    printf("%d + %d = %d\n", a, b, sum);
+    
+    return 0;
+}
+        </div>
+        
+        <!-- JavaScript代码示例 -->
+        <div class="code-preview" data-title="JavaScript示例" data-language="javascript">
+// 计算斐波那契数列
+function fibonacci(n) {
+    if (n <= 1) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+// 使用示例
+console.log(fibonacci(10)); // 输出: 55
+        </div>
+        
+        <!-- Python代码示例 -->
+        <div class="code-preview" data-title="Python示例" data-language="python">
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quick_sort(left) + middle + quick_sort(right)
+
+# 使用示例
+print(quick_sort([3,6,8,10,1,2,1]))
+        </div>
+        
+        <!-- 链表实现的C代码示例 -->
+        <div class="code-preview" data-title="C链表实现" data-language="c">
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+// 链表节点结构
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+// 创建新节点
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    if (newNode == NULL) {
+        printf("内存分配失败\n");
+        exit(1);
+    }
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// 在链表末尾插入节点
+void appendNode(struct Node** head, int data) {
+    struct Node* newNode = createNode(data);
+    
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+    
+    struct Node* temp = *head;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = newNode;
+}
+        </div>
+    </div>
+</body>
+</html>
