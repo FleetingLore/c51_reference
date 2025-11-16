@@ -5,91 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3.3 控制 LED 显示二进制</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-c.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-javascript.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
-    <script src="https://fleetinglore.github.io/parser.js" defer></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            line-height: 1.5;
-        }
-    </style>
+    <link href="https://fleetinglore.github.io/entry.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="code-preview" data-title="C:\code_fleetinglore\c51\3\3\main.c" data-language="c">
-#include &lt;REGX52.H&gt;
-
-/// 无符号整数类型的别名
-#define uint unsigned int
-#define uchar unsigned char
-
-/// 延时参数
-const uint AWAIT = 20;
-
-/**
- * [毫秒级延时函数]
- * 
- * 只是用循环来简单模拟，缺陷是对于不同的设备表现不一致。
-*/
-void delay_ms(uint t) {
-    uchar j;
-    while(t--) {
-        j = 85;
-        while (j--);
-    }
-}
-
-void main() {
-    /// 按键次数统计
-    uchar count = 0;
-    
-    while (1) {
-        /// 当按下 `K_1` 时
-        if (P3_1 == 0) {
-            /* 消抖 */ {
-                // 抖动
-                delay_ms(AWAIT);
-                
-                // 按住时
-                while (P3_1 == 0);
-                
-                // 松手后
-                delay_ms(AWAIT);
-            }
-            
-            /// 计数自增
-            count++;
-            
-            /// 点灯
-            P2 = ~count;
-            
-            /**
-             * 当然，这里可以用
-             *
-             * ```c
-             * P2--;
-             * ```
-             * 
-             * 代替
-             * 
-             * ```c
-             * count++;
-             * P2 = ~count;
-             * ```
-             * 
-             * 这两行，但这样写的话可读性很不好。
-             * 
-             * 毕竟不是搞开发，写的代码应当含义直观一些。
-            */
-        }
-    }
-}
-
-        </div>
+    <div class="code-box" data-title="main.c" data-code-url="https://fleetinglore.github.io/c51_reference/c51/3/3/main.c">
+        <pre><code class="language-c"></code></pre>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-c.min.js"></script>
+    <script src="https://fleetinglore.github.io/parser.js"></script>
+    <script src="https://fleetinglore.github.io/advent.js"></script>
+    <script src="https://fleetinglore.github.io/copy.js"></script>
 </body>
 </html>

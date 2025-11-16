@@ -3,53 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1.2 点亮一个 LED</title>
+    <title>2.1 点亮一个 LED</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-c.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-javascript.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
-    <script src="https://fleetinglore.github.io/parser.js" defer></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            line-height: 1.5;
-        }
-    </style>
+    <link href="https://fleetinglore.github.io/entry.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="code-preview" data-title="C:\code_fleetinglore\c51\2\1\main.c" data-language="c">
-#include &lt;REGX52.H&gt;
-
-/**
- * `P2` 这个接口和开发板上的一堆 LED 灯是连着的。
- *
- * 直接设置 `P2` 的值，就能控制灯。
-*/
-void main() {
-    P2 = 0xFE; /// 点亮一个灯
-    
-    /**
-     * 江协的视频说，`main()` 会反复执行所以灯才没有灭。
-     *
-     * 笔者根据实验认为这个说法是错误的，所以没有加上最后的发散循环。
-     * 
-     * 所谓的发散循环，就是
-     * 
-     * ```c
-     * while (1) {}
-     * ```
-     * 
-     * 或者写作
-     * 
-     * ```c
-     * while (1);
-     * ```
-    */
-}
-        </div>
+    <div class="code-box" data-title="main.c" data-code-url="https://fleetinglore.github.io/c51_reference/c51/2/1/main.c">
+        <pre><code class="language-c"></code></pre>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-c.min.js"></script>
+    <script src="https://fleetinglore.github.io/parser.js"></script>
+    <script src="https://fleetinglore.github.io/advent.js"></script>
+    <script src="https://fleetinglore.github.io/copy.js"></script>
 </body>
 </html>
