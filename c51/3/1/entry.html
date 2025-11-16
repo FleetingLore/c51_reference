@@ -20,21 +20,20 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-c.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-javascript.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
     <script src="https://fleetinglore.github.io/parser.js"></script>
     
     <script>
-        // 在加载 advent.js 之前覆盖 fetch 函数
-        const originalFetch = window.fetch;
-        window.fetch = function(url, options) {
-            if (url === 'https://raw.githubusercontent.com/fleetinglore/c51/main/3/1/main.c') {
-                url = 'https://fleetinglore.github.io/c51_reference/c51/3/1/main.c';
-            }
-            return originalFetch(url, options);
-        };
+        function loadAdvent() {
+            const script = document.createElement('script');
+            script.src = 'https://fleetinglore.github.io/advent.js';
+            document.body.appendChild(script);
+        }
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadAdvent);
+        } else {
+            loadAdvent();
+        }
     </script>
-    
-    <script src="https://fleetinglore.github.io/advent.js"></script>
 </body>
 </html>
