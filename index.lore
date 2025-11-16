@@ -13,3 +13,6 @@
   3.2=_控制=_LED=_状态 = https://fleetinglore.github.io/c51_reference/c51/3/2/entry.html
   3.3=_控制=_LED=_显示二进制 = https://fleetinglore.github.io/c51_reference/c51/3/3/entry.html
   3.4=_控制=_LED=_移位 = https://fleetinglore.github.io/c51_reference/c51/3/4/entry.html
+
++ 4=_数码管
+  4.1=_静态数码管显示数字 = https://fleetinglore.github.io/c51_reference/c51/4/1/entry.html
