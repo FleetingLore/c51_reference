@@ -15,25 +15,15 @@
 </head>
 <body>
     <div class="container">
-        <div class="code-preview" data-title="https://fleetinglore.github.io/c51_reference/c51/3/1/main.c" data-language="c" id="codeContainer">
+        <!-- 简化的代码框，只需要标题和代码URL -->
+        <div class="code-box" data-title="main.c" data-code-url="https://fleetinglore.github.io/c51_reference/c51/3/1/main.c">
+            <pre><code class="language-c"></code></pre>
         </div>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-c.min.js"></script>
     <script src="https://fleetinglore.github.io/parser.js"></script>
-    
-    <script>
-        function loadAdvent() {
-            const script = document.createElement('script');
-            script.src = 'https://fleetinglore.github.io/advent.js';
-            document.body.appendChild(script);
-        }
-        
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', loadAdvent);
-        } else {
-            loadAdvent();
-        }
-    </script>
+    <script src="https://fleetinglore.github.io/advent.js"></script>
 </body>
 </html>
