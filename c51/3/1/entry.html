@@ -10,6 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
     <script src="https://fleetinglore.github.io/parser.js" defer></script>
+    <script src="https://fleetinglore.github.io/advent.js" defer></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,21 +21,8 @@
 </head>
 <body>
     <div class="container">
-        <div class="code-preview" data-title="C:\code_fleetinglore\c51\3\1\main.c" data-language="c">
-#include &lt;REGX52.H&gt;
-
-void main() {
-    while (1) {
-        // `P3_1` 控制 `K1`，`P3_0` 控制 `K2`
-        if (P3_1 == 0 || P3_0 == 0) {
-            /// 如果按下 `K1` 或 `K2`，灯就亮
-            P2_0 = 0;
-        } else {
-            /// 松开，灯就灭
-            P2_0 = 1;
-        }
-    }
-}
+        <div class="code-preview" data-title="C:\code_fleetinglore\c51\3\1\main.c" data-language="c" id="codeContainer">
+            <!-- 代码将从URL加载到这里 -->
         </div>
     </div>
 </body>
