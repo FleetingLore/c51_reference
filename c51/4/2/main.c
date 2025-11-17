@@ -42,11 +42,11 @@ uchar nixie_nums_table[] = {
 };
 
 /// 在第{8-ip}个灯显示数字 `{num}`
-void dispaly_nixie(uchar ip, uchar num) {
+void display_nixie(uchar ip, uchar num) {
     /// 激活 `Y{ip}`，选中 `LED{ip+1}`
-    nixie(7);
+    nixie(ip);
     /// 设置数码管，显示数字 `1`
-    P0 = nixie_nums_table[1];
+    P0 = nixie_nums_table[num];
     
     delay_ms(AWAIT); // 消影
 }
