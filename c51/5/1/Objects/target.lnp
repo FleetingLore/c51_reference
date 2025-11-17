@@ -1,0 +1,5 @@
+".\Objects\main.obj",
+".\Objects\delay.obj",
+".\Objects\nixie.obj" 
+TO ".\Objects\target" 
+PRINT(".\Listings\target.m51") RAMSIZE(256) 

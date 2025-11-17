@@ -1,0 +1,64 @@
+C51 COMPILER V9.60.7.0   NIXIE                                                             11/17/2025 12:52:34 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE NIXIE
+OBJECT MODULE PLACED IN .\Objects\nixie.obj
+COMPILER INVOKED BY: D:\C51\BIN\C51.EXE nixie.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\nixie.lst) 
+                    -OBJECT(.\Objects\nixie.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          
+   3          #include "delay.h"
+   4          
+   5          #define uchar unsigned char
+   6          #define uint unsigned int
+   7              
+   8          /// 延时参数
+   9          const uint AWAIT = 1;
+  10          
+  11          /// 激活 `Y{ip}`，选中 `LED{ip + 1}`
+  12          void nixie(uchar ip) {
+  13   1          P2_2 = ip & 0x01; // `ip` 的第 `0` 位
+  14   1          P2_3 = ip & 0x02; // `ip` 的第 `1` 位
+  15   1          P2_4 = ip & 0x04; // `ip` 的第 `2` 位
+  16   1      }
+  17          
+  18          /// 数码管显示的每一个个位数字对应的编码
+  19          uchar nixie_nums_table[] = {
+  20              0x3F, // 0
+  21              0X06, // 1
+  22              0X5B, // 2
+  23              0x4F, // 3
+  24              0x66, // 4
+  25              0x6D, // 5
+  26              0x7D, // 6
+  27              0x07, // 7
+  28              0x7F, // 8
+  29              0x6F, // 9
+  30          };
+  31          
+  32          /// 在第{8-ip}个灯显示数字 `{num}`
+  33          void display_nixie(uchar ip, uchar num) {
+  34   1          /// 激活 `Y{ip}`，选中 `LED{ip+1}`
+  35   1          nixie(ip);
+  36   1          /// 设置数码管，显示数字 `1`
+  37   1          P0 = nixie_nums_table[num];
+  38   1          
+  39   1          delay_ms(AWAIT); // 消影
+  40   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     31    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     12    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
