@@ -26,8 +26,6 @@ static uchar ascii_to_lcd_char(
     char ascii_char /* 要映射的ASCII字符 */
 ) 
 {
-    uchar lcd_char;  // 在函数开头定义变量
-    
     // 确保字符在LCD1602支持的范围内
     if(ascii_char < 0x20) {
         return 0x20; /// 映射到空格
