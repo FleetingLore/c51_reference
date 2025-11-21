@@ -10,7 +10,5 @@ void main() {
     /// LCD 展示数字
     lcd_show_num(2, 1, 12345, 5);
     
-    while (1) {
-        ;
-    }
+    while (1);
 }
