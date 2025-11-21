@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.7.0   MAIN                                                              11/21/2025 20:03:44 PAGE 1   
+C51 COMPILER V9.60.7.0   MAIN                                                              11/21/2025 20:24:12 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
@@ -48,32 +48,38 @@ line level    source
   38   4                      /// 密码为 `2345`
   39   4                      if (password == 2345) {
   40   5                          lcd_show_string(1, 14, "Ok");
-  41   5      
-  42   5                          password = 0;
-  43   5                          count = 0;
-  44   5                          lcd_show_num(2, 1, password, 4);
-  45   5                      } else {
-  46   5                          lcd_show_string(1, 14, "Err");
-  47   5                          
-  48   5                          password = 0;
-  49   5                          count = 0;
-  50   5                          lcd_show_num(2, 1, password, 4);
-  51   5                      }
-  52   4                  } else if (key_num == 12) {
-  53   4                      password = 0;
-  54   4                      count = 0;
-C51 COMPILER V9.60.7.0   MAIN                                                              11/21/2025 20:03:44 PAGE 2   
+  41   5                          
+  42   5                          delay_ms(2000);
+  43   5                          lcd_show_string(1, 14, "  ");
+  44   5                          
+  45   5                          password = 0;
+  46   5                          count = 0;
+  47   5                          lcd_show_num(2, 1, password, 4);
+  48   5                      } else {
+  49   5                          lcd_show_string(1, 14, "Err");
+  50   5                          
+  51   5                          delay_ms(2000);
+  52   5                          lcd_show_string(1, 14, "   ");
+  53   5                          
+  54   5                          password = 0;
+C51 COMPILER V9.60.7.0   MAIN                                                              11/21/2025 20:24:12 PAGE 2   
 
-  55   4                      lcd_show_num(2, 1, password, 4);
-  56   4                  }
-  57   3              }
-  58   2          }
-  59   1      }
+  55   5                          count = 0;
+  56   5                          lcd_show_num(2, 1, password, 4);
+  57   5                      }
+  58   4                  } else if (key_num == 12) {
+  59   4                      password = 0;
+  60   4                      count = 0;
+  61   4                      lcd_show_num(2, 1, password, 4);
+  62   4                  }
+  63   3              }
+  64   2          }
+  65   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    199    ----
-   CONSTANT SIZE    =     16    ----
+   CODE SIZE        =    224    ----
+   CONSTANT SIZE    =     23    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =      5    ----

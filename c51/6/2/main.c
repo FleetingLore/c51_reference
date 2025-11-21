@@ -38,12 +38,18 @@ void main() {
                 /// 密码为 `2345`
                 if (password == 2345) {
                     lcd_show_string(1, 14, "Ok");
-
+                    
+                    delay_ms(2000);
+                    lcd_show_string(1, 14, "  ");
+                    
                     password = 0;
                     count = 0;
                     lcd_show_num(2, 1, password, 4);
                 } else {
                     lcd_show_string(1, 14, "Err");
+                    
+                    delay_ms(2000);
+                    lcd_show_string(1, 14, "   ");
                     
                     password = 0;
                     count = 0;
