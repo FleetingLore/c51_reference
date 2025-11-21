@@ -2,14 +2,15 @@
 #include "lcd1602.h"
 
 void main() {
-    // lcd 初始化
     lcd_init();
     
-    /// 从第一行的第一个位置开始显示字符串 `"Hello,"`
-    lcd_show_string(1, 1, "Hello,");
+    /// LCD 展示字面量
+    lcd_show_string(1, 1, "Hello, world!");
     
-    /// 从第二行的第一个位置开始显示字符串 `"world"`
-    lcd_show_string(2, 1, "world");
+    /// LCD 展示数字
+    lcd_show_num(2, 1, 12345, 5);
     
-    while (1);
+    while (1) {
+        ;
+    }
 }

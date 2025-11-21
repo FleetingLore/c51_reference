@@ -1,3 +1,4 @@
+/// 无符号整数类型的别名
 #define uint unsigned int
 
 #ifndef __delay_h__

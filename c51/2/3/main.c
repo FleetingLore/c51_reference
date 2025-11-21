@@ -5,7 +5,7 @@
 #define uchar unsigned char
 
 /// 延时参数
-const uint AWAIT = 20;
+const uint AWAIT = 200;
 
 /**
  * [毫秒级延时函数]

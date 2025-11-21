@@ -1,7 +1,0 @@
-".\Objects\main.obj",
-".\Objects\lcd1602.obj",
-".\Objects\delay.obj",
-".\Objects\matrix_key.obj" 
-TO ".\Objects\target" 
-PRINT(".\Listings\target.m51") RAMSIZE(256) 
-DISABLEWARNING (16) 
