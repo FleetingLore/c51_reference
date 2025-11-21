@@ -1,0 +1,184 @@
+C51 COMPILER V9.60.7.0   MATRIX_KEY                                                        11/21/2025 19:09:36 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MATRIX_KEY
+OBJECT MODULE PLACED IN .\Objects\matrix_key.obj
+COMPILER INVOKED BY: D:\C51\BIN\C51.EXE matrix_key.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\matrix
+                    -_key.lst) OBJECT(.\Objects\matrix_key.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          
+   3          #include "delay.h"
+   4          
+   5          /// 无符号整数类型的别名
+   6          #define uchar unsigned char
+   7          #define uint  unsigned int
+   8          
+   9          /// 延时参数
+  10          const uint AWAIT = 20;
+  11          
+  12          uchar matrix_key() {
+  13   1          uchar key_number = 0;
+  14   1          
+  15   1          P1 = 0xFF;
+  16   1          P1_3 = 0;
+  17   1          
+  18   1          if (P1_7 == 0) {
+  19   2              delay_ms(AWAIT);
+  20   2              while (P1_7 == 0);
+  21   2              delay_ms(AWAIT);
+  22   2              
+  23   2              key_number = 1;
+  24   2          }
+  25   1          
+  26   1          if (P1_6 == 0) {
+  27   2              delay_ms(AWAIT);
+  28   2              while (P1_7 == 0);
+  29   2              delay_ms(AWAIT);
+  30   2              
+  31   2              key_number = 5;
+  32   2          }
+  33   1          
+  34   1          if (P1_5 == 0) {
+  35   2              delay_ms(AWAIT);
+  36   2              while (P1_7 == 0);
+  37   2              delay_ms(AWAIT);
+  38   2              
+  39   2              key_number = 9;
+  40   2          }
+  41   1          
+  42   1          if (P1_4 == 0) {
+  43   2              delay_ms(AWAIT);
+  44   2              while (P1_7 == 0);
+  45   2              delay_ms(AWAIT);
+  46   2              
+  47   2              key_number = 13;
+  48   2          }
+  49   1          
+  50   1          P1 = 0xFF;
+  51   1          P1_2 = 0;
+  52   1          
+  53   1          if (P1_7 == 0) {
+  54   2              delay_ms(AWAIT);
+C51 COMPILER V9.60.7.0   MATRIX_KEY                                                        11/21/2025 19:09:36 PAGE 2   
+
+  55   2              while (P1_7 == 0);
+  56   2              delay_ms(AWAIT);
+  57   2              
+  58   2              key_number = 2;
+  59   2          }
+  60   1          
+  61   1          if (P1_6 == 0) {
+  62   2              delay_ms(AWAIT);
+  63   2              while (P1_7 == 0);
+  64   2              delay_ms(AWAIT);
+  65   2              
+  66   2              key_number = 6;
+  67   2          }
+  68   1          
+  69   1          if (P1_5 == 0) {
+  70   2              delay_ms(AWAIT);
+  71   2              while (P1_7 == 0);
+  72   2              delay_ms(AWAIT);
+  73   2              
+  74   2              key_number = 10;
+  75   2          }
+  76   1          
+  77   1          if (P1_4 == 0) {
+  78   2              delay_ms(AWAIT);
+  79   2              while (P1_7 == 0);
+  80   2              delay_ms(AWAIT);
+  81   2              
+  82   2              key_number = 14;
+  83   2          }
+  84   1          
+  85   1          P1 = 0xFF;
+  86   1          P1_1 = 0;
+  87   1          
+  88   1          if (P1_7 == 0) {
+  89   2              delay_ms(AWAIT);
+  90   2              while (P1_7 == 0);
+  91   2              delay_ms(AWAIT);
+  92   2              
+  93   2              key_number = 3;
+  94   2          }
+  95   1          
+  96   1          if (P1_6 == 0) {
+  97   2              delay_ms(AWAIT);
+  98   2              while (P1_7 == 0);
+  99   2              delay_ms(AWAIT);
+ 100   2              
+ 101   2              key_number = 7;
+ 102   2          }
+ 103   1          
+ 104   1          if (P1_5 == 0) {
+ 105   2              delay_ms(AWAIT);
+ 106   2              while (P1_7 == 0);
+ 107   2              delay_ms(AWAIT);
+ 108   2              
+ 109   2              key_number = 11;
+ 110   2          }
+ 111   1          
+ 112   1          if (P1_4 == 0) {
+ 113   2              delay_ms(AWAIT);
+ 114   2              while (P1_7 == 0);
+ 115   2              delay_ms(AWAIT);
+ 116   2              
+C51 COMPILER V9.60.7.0   MATRIX_KEY                                                        11/21/2025 19:09:36 PAGE 3   
+
+ 117   2              key_number = 15;
+ 118   2          }
+ 119   1          
+ 120   1          P1 = 0xFF;
+ 121   1          P1_0 = 0;
+ 122   1          
+ 123   1          if (P1_7 == 0) {
+ 124   2              delay_ms(AWAIT);
+ 125   2              while (P1_7 == 0);
+ 126   2              delay_ms(AWAIT);
+ 127   2              
+ 128   2              key_number = 4;
+ 129   2          }
+ 130   1          
+ 131   1          if (P1_6 == 0) {
+ 132   2              delay_ms(AWAIT);
+ 133   2              while (P1_7 == 0);
+ 134   2              delay_ms(AWAIT);
+ 135   2              
+ 136   2              key_number = 8;
+ 137   2          }
+ 138   1          
+ 139   1          if (P1_5 == 0) {
+ 140   2              delay_ms(AWAIT);
+ 141   2              while (P1_7 == 0);
+ 142   2              delay_ms(AWAIT);
+ 143   2              
+ 144   2              key_number = 12;
+ 145   2          }
+ 146   1          
+ 147   1          if (P1_4 == 0) {
+ 148   2              delay_ms(AWAIT);
+ 149   2              while (P1_7 == 0);
+ 150   2              delay_ms(AWAIT);
+ 151   2              
+ 152   2              key_number = 16;
+ 153   2          }
+ 154   1          
+ 155   1          return key_number;
+ 156   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    394    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

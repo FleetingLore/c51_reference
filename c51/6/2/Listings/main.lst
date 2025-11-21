@@ -1,0 +1,85 @@
+C51 COMPILER V9.60.7.0   MAIN                                                              11/21/2025 20:03:44 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main.lst) OB
+                    -JECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          
+   3          #include "delay.h"
+   4          #include "lcd1602.h"
+   5          #include "matrix_key.h"
+   6          
+   7          /// 无符号整数类型的别名
+   8          #define uchar unsigned char
+   9          #define uint  unsigned int
+  10          
+  11          uchar key_num;
+  12          uint password;
+  13          uint count;
+  14          
+  15          void main() {
+  16   1          lcd_init();
+  17   1          lcd_show_string(1, 1, "Password");
+  18   1          
+  19   1          count = 0;
+  20   1          
+  21   1          lcd_show_num(2, 1, password, 4);
+  22   1          
+  23   1          while (1) {
+  24   2              key_num = matrix_key();
+  25   2              
+  26   2              if (key_num) {
+  27   3                  /// key_num = 0..9
+  28   3                  if (key_num <= 10) {
+  29   4                      /// count = 0..3
+  30   4                      if (count < 4) {
+  31   5                          password *= 10;
+  32   5                          password += key_num % 10;
+  33   5                          count++;
+  34   5                      }
+  35   4      
+  36   4                      lcd_show_num(2, 1, password, 4);
+  37   4                  } else if (key_num == 11) {
+  38   4                      /// 密码为 `2345`
+  39   4                      if (password == 2345) {
+  40   5                          lcd_show_string(1, 14, "Ok");
+  41   5      
+  42   5                          password = 0;
+  43   5                          count = 0;
+  44   5                          lcd_show_num(2, 1, password, 4);
+  45   5                      } else {
+  46   5                          lcd_show_string(1, 14, "Err");
+  47   5                          
+  48   5                          password = 0;
+  49   5                          count = 0;
+  50   5                          lcd_show_num(2, 1, password, 4);
+  51   5                      }
+  52   4                  } else if (key_num == 12) {
+  53   4                      password = 0;
+  54   4                      count = 0;
+C51 COMPILER V9.60.7.0   MAIN                                                              11/21/2025 20:03:44 PAGE 2   
+
+  55   4                      lcd_show_num(2, 1, password, 4);
+  56   4                  }
+  57   3              }
+  58   2          }
+  59   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    199    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      5    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

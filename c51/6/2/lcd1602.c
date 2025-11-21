@@ -1,8 +1,6 @@
 #include <REGX52.H>
-
 #include "delay.h"
 
-/// 无符号整数类型的别名
 #define uchar unsigned char
 #define uint  unsigned int
 
