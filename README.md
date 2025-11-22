@@ -6,4 +6,4 @@ https://fleetinglore.github.io/c51_reference
 
 开发环境是 Keil μVision5。
 
-如果没有把编码设置成 UTF-8，中文注释可能会被转化成乱码。
+应将编码设置成 UTF-8，否则中文注释可能会被转化成乱码。
