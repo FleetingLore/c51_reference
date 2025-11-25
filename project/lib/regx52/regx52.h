@@ -2,43 +2,43 @@
 #define __AT89X52_H__
 
 // 字节寄存器
-sfr p0      = 0x80;
-sfr sp      = 0x81;
-sfr dpl     = 0x82;
-sfr dph     = 0x83;
-sfr pcon    = 0x87;
-sfr tcon    = 0x88;
-sfr tmod    = 0x89;
-sfr tl0     = 0x8A;
-sfr tl1     = 0x8B;
-sfr th0     = 0x8C;
-sfr th1     = 0x8D;
-sfr p1      = 0x90;
-sfr scon    = 0x98;
-sfr sbuf    = 0x99;
-sfr p2      = 0xA0;
-sfr ie      = 0xA8;
-sfr p3      = 0xB0;
-sfr ip      = 0xB8;
-sfr t2con   = 0xC8;
-sfr t2mod   = 0xC9;
-sfr rcap2l  = 0xCA;
-sfr rcap2h  = 0xCB;
-sfr tl2     = 0xCC;
-sfr th2     = 0xCD;
-sfr psw     = 0xD0;
-sfr acc     = 0xE0;
-sfr b       = 0xF0;
+sfr P0      = 0x80;
+sfr SP      = 0x81;
+sfr DPL     = 0x82;
+sfr DPH     = 0x83;
+sfr PCON    = 0x87;
+sfr TCON    = 0x88;
+sfr TMOD    = 0x89;
+sfr TL0     = 0x8A;
+sfr TL1     = 0x8B;
+sfr TH0     = 0x8C;
+sfr TH1     = 0x8D;
+sfr P1      = 0x90;
+sfr SCON    = 0x98;
+sfr SBUF    = 0x99;
+sfr P2      = 0xA0;
+sfr IE      = 0xA8;
+sfr P3      = 0xB0;
+sfr IP      = 0xB8;
+sfr T2CON   = 0xC8;
+sfr T2MOD   = 0xC9;
+sfr RCAP2L  = 0xCA;
+sfr RCAP2H  = 0xCB;
+sfr TL2     = 0xCC;
+sfr TH2     = 0xCD;
+sfr PSW     = 0xD0;
+sfr ACC     = 0xE0;
+sfr B       = 0xF0;
 
 // P0 的位
-sbit p0_0 = 0x80;
-sbit p0_1 = 0x81;
-sbit p0_2 = 0x82;
-sbit p0_3 = 0x83;
-sbit p0_4 = 0x84;
-sbit p0_5 = 0x85;
-sbit p0_6 = 0x86;
-sbit p0_7 = 0x87;
+sbit P0_0 = 0x80;
+sbit P0_1 = 0x81;
+sbit P0_2 = 0x82;
+sbit P0_3 = 0x83;
+sbit P0_4 = 0x84;
+sbit P0_5 = 0x85;
+sbit P0_6 = 0x86;
+sbit P0_7 = 0x87;
 
 // PCON Bit Values
 #define IDL_    0x01
@@ -51,14 +51,14 @@ sbit p0_7 = 0x87;
 #define SMOD_   0x80
 
 // TCON Bit Registers
-sbit it0  = 0x88;
-sbit ie0  = 0x89;
-sbit it1  = 0x8A;
-sbit ie1  = 0x8B;
-sbit tr0  = 0x8C;
-sbit tf0  = 0x8D;
-sbit tr1  = 0x8E;
-sbit tf1  = 0x8F;
+sbit IT0  = 0x88;
+sbit IE0  = 0x89;
+sbit IT1  = 0x8A;
+sbit IE1  = 0x8B;
+sbit TR0  = 0x8C;
+sbit TF0  = 0x8D;
+sbit TR1  = 0x8E;
+sbit TF1  = 0x8F;
 
 // TMOD Bit Values
 #define T0_M0_   0x01
@@ -74,98 +74,98 @@ sbit tf1  = 0x8F;
 #define T0_MASK_ 0x0F
 
 // P1 的位
-sbit p1_0 = 0x90;
-sbit p1_1 = 0x91;
-sbit p1_2 = 0x92;
-sbit p1_3 = 0x93;
-sbit p1_4 = 0x94;
-sbit p1_5 = 0x95;
-sbit p1_6 = 0x96;
-sbit p1_7 = 0x97;
+sbit P1_0 = 0x90;
+sbit P1_1 = 0x91;
+sbit P1_2 = 0x92;
+sbit P1_3 = 0x93;
+sbit P1_4 = 0x94;
+sbit P1_5 = 0x95;
+sbit P1_6 = 0x96;
+sbit P1_7 = 0x97;
 
-sbit t2   = 0x90; // External input to Timer/Counter 2, clock out
-sbit t2ex = 0x91; // Timer/Counter 2 capture/reload trigger & dir ctl
+sbit T2   = 0x90; // External input to Timer/Counter 2, clock out
+sbit T2EX = 0x91; // Timer/Counter 2 capture/reload trigger & dir ctl
 
 // SCON 的位
-sbit ri   = 0x98;
-sbit ti   = 0x99;
-sbit rb8  = 0x9A;
-sbit tb8  = 0x9B;
-sbit ren  = 0x9C;
-sbit sm2  = 0x9D;
-sbit sm1  = 0x9E;
-sbit sm0  = 0x9F;
+sbit RI   = 0x98;
+sbit TI   = 0x99;
+sbit RB8  = 0x9A;
+sbit TB8  = 0x9B;
+sbit REN = 0x9C;
+sbit SM2  = 0x9D;
+sbit SM1  = 0x9E;
+sbit SM0  = 0x9F;
 
 // P2 的位
-sbit p2_0 = 0xA0;
-sbit p2_1 = 0xA1;
-sbit p2_2 = 0xA2;
-sbit p2_3 = 0xA3;
-sbit p2_4 = 0xA4;
-sbit p2_5 = 0xA5;
-sbit p2_6 = 0xA6;
-sbit p2_7 = 0xA7;
+sbit P2_0 = 0xA0;
+sbit P2_1 = 0xA1;
+sbit P2_2 = 0xA2;
+sbit P2_3 = 0xA3;
+sbit P2_4 = 0xA4;
+sbit P2_5 = 0xA5;
+sbit P2_6 = 0xA6;
+sbit P2_7 = 0xA7;
 
 // IE Bit Registers
-sbit ex0  = 0xA8; // 1=Enable External interrupt 0
-sbit et0  = 0xA9; // 1=Enable Timer 0 interrupt
-sbit ex1  = 0xAA; // 1=Enable External interrupt 1
-sbit et1  = 0xAB; // 1=Enable Timer 1 interrupt
-sbit es   = 0xAC; // 1=Enable Serial port interrupt
-sbit et2  = 0xAD; // 1=Enable Timer 2 interrupt
+sbit EX0  = 0xA8; // 1=Enable External interrupt 0
+sbit ET0  = 0xA9; // 1=Enable Timer 0 interrupt
+sbit EX1  = 0xAA; // 1=Enable External interrupt 1
+sbit ET1  = 0xAB; // 1=Enable Timer 1 interrupt
+sbit ES   = 0xAC; // 1=Enable Serial port interrupt
+sbit ET2  = 0xAD; // 1=Enable Timer 2 interrupt
 
-sbit ea   = 0xAF; // 0=Disable all interrupts
+sbit EA   = 0xAF; // 0=Disable all interrupts
 
 // P3 的位
-sbit p3_0 = 0xB0;
-sbit p3_1 = 0xB1;
-sbit p3_2 = 0xB2;
-sbit p3_3 = 0xB3;
-sbit p3_4 = 0xB4;
-sbit p3_5 = 0xB5;
-sbit p3_6 = 0xB6;
-sbit p3_7 = 0xB7;
+sbit P3_0 = 0xB0;
+sbit P3_1 = 0xB1;
+sbit P3_2 = 0xB2;
+sbit P3_3 = 0xB3;
+sbit P3_4 = 0xB4;
+sbit P3_5 = 0xB5;
+sbit P3_6 = 0xB6;
+sbit P3_7 = 0xB7;
 
-sbit rxd  = 0xB0; // Serial data input
-sbit txd  = 0xB1; // Serial data output
-sbit int0 = 0xB2; // External interrupt 0
-sbit int1 = 0xB3; // External interrupt 1
-sbit t0   = 0xB4; // Timer 0 external input
-sbit t1   = 0xB5; // Timer 1 external input
-sbit wr   = 0xB6; // External data memory write strobe
-sbit rd   = 0xB7; // External data memory read strobe
+sbit RXd  = 0xB0; // Serial data input
+sbit TXd  = 0xB1; // Serial data output
+sbit INT0 = 0xB2; // External interrupt 0
+sbit INT1 = 0xB3; // External interrupt 1
+sbit T0   = 0xB4; // Timer 0 external input
+sbit T1   = 0xB5; // Timer 1 external input
+sbit WR   = 0xB6; // External data memory write strobe
+sbit RD   = 0xB7; // External data memory read strobe
 
 // IP 的位
-sbit px0  = 0xB8;
-sbit pt0  = 0xB9;
-sbit px1  = 0xBA;
-sbit pt1  = 0xBB;
-sbit ps   = 0xBC;
-sbit pt2  = 0xBD;
+sbit PX0  = 0xB8;
+sbit PT0  = 0xB9;
+sbit PX1  = 0xBA;
+sbit PT1  = 0xBB;
+sbit PS   = 0xBC;
+sbit PT2  = 0xBD;
 
 // T2CON 的位
-sbit cp_rl2= 0xC8;      // 0=Reload, 1=Capture select
-sbit c_t2 = 0xC9;       // 0=Timer, 1=Counter
-sbit tr2  = 0xCA;       // 0=Stop timer, 1=Start timer
-sbit exen2= 0xCB;       // Timer 2 external enable
-sbit tclk = 0xCC;       // 0=Serial clock uses Timer 1 overflow, 1=Timer 2
-sbit rclk = 0xCD;       // 0=Serial clock uses Timer 1 overflow, 1=Timer 2
-sbit exf2 = 0xCE;       // Timer 2 external flag
-sbit tf2  = 0xCF;       // Timer 2 overflow flag
+sbit CP_RL2= 0xC8;      // 0=Reload, 1=Capture select
+sbit C_T2 = 0xC9;       // 0=Timer, 1=Counter
+sbit TR2  = 0xCA;       // 0=Stop timer, 1=Start timer
+sbit EXEN2= 0xCB;       // Timer 2 external enable
+sbit TCLK = 0xCC;       // 0=Serial clock uses Timer 1 overflow, 1=Timer 2
+sbit RCLK = 0xCD;       // 0=Serial clock uses Timer 1 overflow, 1=Timer 2
+sbit EXF2 = 0xCE;       // Timer 2 external flag
+sbit TF2  = 0xCF;       // Timer 2 overflow flag
 
 // T2MOD Bit Values
 #define DCEN_   0x01    // 1=Timer 2 can be configured as up/down counter
 #define T2OE_   0x02    // Timer 2 output enable
 
 // PSW 的位
-sbit p    = 0xD0;
-sbit f1   = 0xD1;
-sbit ov   = 0xD2;
-sbit rs0  = 0xD3;
-sbit rs1  = 0xD4;
-sbit f0   = 0xD5;
-sbit ac   = 0xD6;
-sbit cy   = 0xD7;
+sbit P    = 0xD0;
+sbit F1   = 0xD1;
+sbit OV   = 0xD2;
+sbit RS0  = 0xD3;
+sbit RS1  = 0xD4;
+sbit F0   = 0xD5;
+sbit AC   = 0xD6;
+sbit CY   = 0xD7;
 
 // 中断向量: 地址 = (Number * 8) + 3
 #define IE0_VECTOR	0  // 0x03 外部中断 0
@@ -176,9 +176,5 @@ sbit cy   = 0xD7;
 
 #define TF2_VECTOR	5  // 0x2B 计时器 2
 #define EX2_VECTOR	5  // 0x2B 外部中断 2
-
-/// 无符号整数类型的别名
-#define uchar unsigned char
-#define uint unsigned int
 
 #endif
