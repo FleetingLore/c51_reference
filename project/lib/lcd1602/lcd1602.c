@@ -6,7 +6,7 @@
 #define uint unsigned int
 
 /// 数据总线
-#define lcd_data_port P0
+#define LCD_DAAT_PORT P0
 
 /// 控制信号引脚
 sbit LCD_RS = 0xA6;
@@ -61,7 +61,7 @@ static void lcd_write_command(
 {
     LCD_RS = 0;
     LCD_RW = 0;
-    lcd_data_port = command;
+    LCD_DAAT_PORT = command;
     LCD_EN = 1;
     delay_ms(AWAIT);
     LCD_EN = 0;
@@ -79,7 +79,7 @@ static void lcd_write_data(
 {
     LCD_RS = 1;
     LCD_RW = 0;
-    lcd_data_port = input_data;
+    LCD_DAAT_PORT = input_data;
     LCD_EN = 1;
     delay_ms(AWAIT);
     LCD_EN = 0;
