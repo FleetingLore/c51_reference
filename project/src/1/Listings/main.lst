@@ -1,0 +1,378 @@
+C51 COMPILER V9.60.7.0   MAIN                                                              11/25/2025 12:22:42 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main.lst) OB
+                    -JECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          
+   3          #include "delay.h"
+   4          
+   5          const int AWAIT = 20;
+   6          
+   7          // 独立按键
+   8          #define K1_off P3_1
+   9          #define K2_off P3_0
+  10          #define K3_off P3_2
+  11          #define K4_off P3_3
+  12          
+  13          // LED 灯
+  14          #define D_off P2
+  15          
+  16          #define D1_off P2_0
+  17          #define D2_off P2_1
+  18          #define D3_off P2_2
+  19          #define D4_off P2_3
+  20          #define D5_off P2_4
+  21          #define D6_off P2_5
+  22          #define D7_off P2_6
+  23          #define D8_off P2_7
+  24          
+  25          /**
+  26           * [按下 `K1`]
+  27           * 
+  28           * LED 模块以两个为一组从左向右移位，按一次移两位
+  29           */
+  30          static int on_k1() {
+  31   1          
+  32   1          int ROOT = 0x03;
+  33   1      
+  34   1          /// 初始化，偏移为 `0`
+  35   1          int ip = 0; // index position
+  36   1              
+  37   1          /// 初始化，让 `D1` 一开始就亮
+  38   1          D_off = ~(ROOT << ip);
+  39   1                  
+  40   1          while (1) {   
+  41   2              /// 按 `K_1` 右移
+  42   2              if (K1_off == 0) {
+  43   3                  /* 消抖 */ {
+  44   4                      // 抖动
+  45   4                      delay_ms(AWAIT);
+  46   4                              
+  47   4                      // 按住时
+  48   4                      while (K1_off == 0);
+  49   4                              
+  50   4                      // 松手后
+  51   4                      delay_ms(AWAIT);
+  52   4                  }
+  53   3                          
+  54   3                  /* 饱和返回 */
+C51 COMPILER V9.60.7.0   MAIN                                                              11/25/2025 12:22:42 PAGE 2   
+
+  55   3                  if (ip == 6) {
+  56   4                      continue;
+  57   4                  }
+  58   3                          
+  59   3                  /* 点亮灯位右移 */ {
+  60   4                      ip += 2;
+  61   4                      D_off = ~(ROOT << ip);
+  62   4                  }
+  63   3              }
+  64   2                 
+  65   2              /// 按 `K_4` 返回
+  66   2              if (K4_off == 0) {
+  67   3                  /* 消抖 */ {
+  68   4                      // 抖动
+  69   4                      delay_ms(AWAIT);
+  70   4                           
+  71   4                      // 按住时
+  72   4                      while (K4_off == 0);
+  73   4                              
+  74   4                      // 松手后
+  75   4                      delay_ms(AWAIT);
+  76   4                  }
+  77   3      
+  78   3                  D_off = 0xff;
+  79   3                  return 1;
+  80   3              }
+  81   2          }
+  82   1      }
+  83          
+  84          /**
+  85           * [按下 `K2`]
+  86           * 
+  87           * LED 模块从左向右亮，按照先奇后偶的顺序亮起
+  88           * 后灯亮前灯灭，一直循环，时间间隔 0.5 秒
+  89           * 再次按下 K2 停止，跳出循环。（1-3-5-7-2-4-6-8）
+  90           */
+  91          static int on_k2() {
+  92   1          while (1) {
+  93   2              /* `D1` 亮 */ {
+  94   3                  D1_off = 0;
+  95   3                  delay_ms(500);
+  96   3                  D1_off = 1;
+  97   3                  
+  98   3                  // 按下 `K2` 时返回
+  99   3                  if (K2_off == 0) {
+ 100   4                      /* 消抖 */ {
+ 101   5                          // 抖动
+ 102   5                          delay_ms(AWAIT);
+ 103   5                      
+ 104   5                          // 按住时
+ 105   5                          while (K2_off == 0);
+ 106   5                      
+ 107   5                          // 松手后
+ 108   5                          delay_ms(AWAIT);
+ 109   5                      }
+ 110   4                      
+ 111   4                      return 2;
+ 112   4                  }
+ 113   3              }
+ 114   2              
+ 115   2              /* `D3` 亮 */ {
+ 116   3                  D3_off = 0;
+C51 COMPILER V9.60.7.0   MAIN                                                              11/25/2025 12:22:42 PAGE 3   
+
+ 117   3                  delay_ms(500);
+ 118   3                  D3_off = 1;
+ 119   3                  
+ 120   3                  // 按下 `K2` 时返回
+ 121   3                  if (K2_off == 0) {
+ 122   4                      /* 消抖 */ {
+ 123   5                          // 抖动
+ 124   5                          delay_ms(AWAIT);
+ 125   5                      
+ 126   5                          // 按住时
+ 127   5                          while (K2_off == 0);
+ 128   5                      
+ 129   5                          // 松手后
+ 130   5                          delay_ms(AWAIT);
+ 131   5                      }
+ 132   4                      
+ 133   4                      return 2;
+ 134   4                  }
+ 135   3              }
+ 136   2                  
+ 137   2              /* `D5` 亮 */ {
+ 138   3                  D5_off = 0;
+ 139   3                  delay_ms(500);
+ 140   3                  D5_off = 1;
+ 141   3                  
+ 142   3                  // 按下 `K2` 时返回
+ 143   3                  if (K2_off == 0) {
+ 144   4                      /* 消抖 */ {
+ 145   5                          // 抖动
+ 146   5                          delay_ms(AWAIT);
+ 147   5                      
+ 148   5                          // 按住时
+ 149   5                          while (K2_off == 0);
+ 150   5                      
+ 151   5                          // 松手后
+ 152   5                          delay_ms(AWAIT);
+ 153   5                      }
+ 154   4                      
+ 155   4                      return 2;
+ 156   4                  }
+ 157   3              }
+ 158   2                  
+ 159   2              /* `D7` 亮 */ {
+ 160   3                  D7_off = 0;
+ 161   3                  delay_ms(500);
+ 162   3                  D7_off = 1;
+ 163   3                  
+ 164   3                  // 按下 `K2` 时返回
+ 165   3                  if (K2_off == 0) {
+ 166   4                      /* 消抖 */ {
+ 167   5                          // 抖动
+ 168   5                          delay_ms(AWAIT);
+ 169   5                      
+ 170   5                          // 按住时
+ 171   5                          while (K2_off == 0);
+ 172   5                      
+ 173   5                          // 松手后
+ 174   5                          delay_ms(AWAIT);
+ 175   5                      }
+ 176   4                      
+ 177   4                      return 2;
+ 178   4                  }
+C51 COMPILER V9.60.7.0   MAIN                                                              11/25/2025 12:22:42 PAGE 4   
+
+ 179   3              }
+ 180   2                  
+ 181   2              /* `D2` 亮 */ {
+ 182   3                  D2_off = 0;
+ 183   3                  delay_ms(500);
+ 184   3                  D2_off = 1;
+ 185   3                  
+ 186   3                  // 按下 `K2` 时返回
+ 187   3                  if (K2_off == 0) {
+ 188   4                      /* 消抖 */ {
+ 189   5                          // 抖动
+ 190   5                          delay_ms(AWAIT);
+ 191   5                      
+ 192   5                          // 按住时
+ 193   5                          while (K2_off == 0);
+ 194   5                      
+ 195   5                          // 松手后
+ 196   5                          delay_ms(AWAIT);
+ 197   5                      }
+ 198   4                      
+ 199   4                      return 2;
+ 200   4                  }
+ 201   3              }
+ 202   2                  
+ 203   2              /* `D4` 亮 */ {
+ 204   3                  D4_off = 0;
+ 205   3                  delay_ms(500);
+ 206   3                  D4_off = 1;
+ 207   3                  
+ 208   3                  // 按下 `K2` 时返回
+ 209   3                  if (K2_off == 0) {
+ 210   4                      /* 消抖 */ {
+ 211   5                          // 抖动
+ 212   5                          delay_ms(AWAIT);
+ 213   5                      
+ 214   5                          // 按住时
+ 215   5                          while (K2_off == 0);
+ 216   5                      
+ 217   5                          // 松手后
+ 218   5                          delay_ms(AWAIT);
+ 219   5                      }
+ 220   4                      
+ 221   4                      return 2;
+ 222   4                  }
+ 223   3              }
+ 224   2                  
+ 225   2              /* `D6` 亮 */ {
+ 226   3                  D6_off = 0;
+ 227   3                  delay_ms(500);
+ 228   3                  D6_off = 1;
+ 229   3                  
+ 230   3                  // 按下 `K2` 时返回
+ 231   3                  if (K2_off == 0) {
+ 232   4                      /* 消抖 */ {
+ 233   5                          // 抖动
+ 234   5                          delay_ms(AWAIT);
+ 235   5                      
+ 236   5                          // 按住时
+ 237   5                          while (K2_off == 0);
+ 238   5                      
+ 239   5                          // 松手后
+ 240   5                          delay_ms(AWAIT);
+C51 COMPILER V9.60.7.0   MAIN                                                              11/25/2025 12:22:42 PAGE 5   
+
+ 241   5                      }
+ 242   4                      
+ 243   4                      return 2;
+ 244   4                  }
+ 245   3              }
+ 246   2                  
+ 247   2              /* `D8` 亮 */ {
+ 248   3                  D8_off = 0;
+ 249   3                  delay_ms(500);
+ 250   3                  D8_off = 1;
+ 251   3                  
+ 252   3                  // 按下 `K2` 时返回
+ 253   3                  if (K2_off == 0) {
+ 254   4                      /* 消抖 */ {
+ 255   5                          // 抖动
+ 256   5                          delay_ms(AWAIT);
+ 257   5                      
+ 258   5                          // 按住时
+ 259   5                          while (K2_off == 0);
+ 260   5                      
+ 261   5                          // 松手后
+ 262   5                          delay_ms(AWAIT);
+ 263   5                      }
+ 264   4                      
+ 265   4                      return 2;
+ 266   4                  }
+ 267   3              }
+ 268   2          }
+ 269   1      }
+ 270          
+ 271          /**
+ 272           * [按下 `K3`]
+ 273           * 
+ 274           * 所有灯亮起，3 秒后全部熄灭
+ 275           */
+ 276          static int on_k3() {
+ 277   1          /// 所有灯亮起
+ 278   1          D_off = 0x00; 
+ 279   1          
+ 280   1          /// 两秒后熄灭
+ 281   1          delay_ms(2000);
+ 282   1          D_off = 0xFF;
+ 283   1          
+ 284   1          return 3;
+ 285   1      }
+ 286          
+ 287          static void never() {
+ 288   1          /// 当按下 `K_1` 时
+ 289   1          if (K1_off == 0) {
+ 290   2              /* 消抖 */ {
+ 291   3                  // 抖动
+ 292   3                  delay_ms(AWAIT);
+ 293   3                      
+ 294   3                  // 按住时
+ 295   3                  while (K1_off == 0);
+ 296   3                      
+ 297   3                  // 松手后
+ 298   3                  delay_ms(AWAIT);
+ 299   3              }
+ 300   2                  
+ 301   2              /// 按下 `K1`
+ 302   2              on_k1();
+C51 COMPILER V9.60.7.0   MAIN                                                              11/25/2025 12:22:42 PAGE 6   
+
+ 303   2          }
+ 304   1          
+ 305   1          /// 当按下 `K_2` 时
+ 306   1          if (K2_off == 0) {
+ 307   2              /* 消抖 */ {
+ 308   3                  // 抖动
+ 309   3                  delay_ms(AWAIT);
+ 310   3                      
+ 311   3                  // 按住时
+ 312   3                  while (K2_off == 0);
+ 313   3                      
+ 314   3                  // 松手后
+ 315   3                  delay_ms(AWAIT);
+ 316   3              }
+ 317   2                  
+ 318   2              /// 按下 `K2`
+ 319   2              on_k2();
+ 320   2          }
+ 321   1          
+ 322   1          /// 当按下 `K_3` 时
+ 323   1          if (K3_off == 0) {
+ 324   2              /* 消抖 */ {
+ 325   3                  // 抖动
+ 326   3                  delay_ms(AWAIT);
+ 327   3                      
+ 328   3                  // 按住时
+ 329   3                  while (K3_off == 0);
+ 330   3                      
+ 331   3                  // 松手后
+ 332   3                  delay_ms(AWAIT);
+ 333   3              }
+ 334   2                  
+ 335   2              /// 按下 `K3`
+ 336   2              on_k3();
+ 337   2          }
+ 338   1      }
+ 339          
+ 340          void main() {
+ 341   1          while (1) {
+ 342   2              never();
+ 343   2          }
+ 344   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    429    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

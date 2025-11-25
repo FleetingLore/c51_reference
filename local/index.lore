@@ -30,5 +30,8 @@
 + c51=_项目
   + 依赖库
     delay = https://fleetinglore.github.io/c51_reference/project/doc/lib/delay/entry.html
-
-  # building + 学校的作业
+    lcd1602 = https://fleetinglore.github.io/c51_reference/project/doc/lib/lcd1602/entry.html
+  
+  + 学校的作业
+    1 = https://fleetinglore.github.io/c51_reference/project/doc/lib/delay/entry.html
+    
