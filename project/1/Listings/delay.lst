@@ -1,0 +1,44 @@
+C51 COMPILER V9.60.7.0   DELAY                                                             11/27/2025 22:05:20 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE DELAY
+OBJECT MODULE PLACED IN .\Objects\delay.obj
+COMPILER INVOKED BY: D:\C51\BIN\C51.EXE ..\..\lib\delay\delay.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\List
+                    -ings\delay.lst) OBJECT(.\Objects\delay.obj)
+
+line level    source
+
+   1          /// 无符号整数类型的别名
+   2          #define uchar unsigned char
+   3          #define uint unsigned int
+   4          
+   5          /**
+   6           * [毫秒级延时函数]
+   7           * 
+   8           * 只是用循环来简单模拟，缺陷是对于不同的设备表现不一致。
+   9           */
+  10          void delay_ms(
+  11              uint t /* 延时时间 */
+  12          ) 
+  13          {
+  14   1          uchar j;  // 在函数开头定义变量
+  15   1          
+  16   1          while(t--) {
+  17   2              j = 85;
+  18   2              while (j--);
+  19   2          }
+  20   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     21    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

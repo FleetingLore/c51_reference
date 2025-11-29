@@ -1,0 +1,54 @@
+C51 COMPILER V9.60.7.0   K1_ON                                                             11/29/2025 10:23:44 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE K1_ON
+OBJECT MODULE PLACED IN .\Objects\k1_on.obj
+COMPILER INVOKED BY: D:\C51\BIN\C51.EXE lib\key\k1_on.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\k1_
+                    -on.lst) OBJECT(.\Objects\k1_on.obj)
+
+line level    source
+
+   1          /**
+   2           * @file lib/key/k1_on.c
+   3           * @author FleetingLore macro__9@outook.com
+   4           * @brief 针对 K1 的独立按键检测
+   5           * @date 2025-11-29
+   6          */
+   7          #include "prelude.h"
+   8          #include "lib/delay/delay.h"
+   9          
+  10          /**
+  11           * @return 按下 K1 则返回 1，否则返回 0
+  12          */
+  13          int k1_on()
+  14          {
+  15   1          if (K1_OFF == 0)
+  16   1          {
+  17   2              /* 消抖 */
+  18   2              delay_ms(AWAIT); /* 按下后抖动 */
+  19   2              while (K1_OFF == 0); /* 按住时 */
+  20   2              delay_ms(AWAIT); /* 松手后抖动 */
+  21   2      
+  22   2              /* 按下时返回 1 */
+  23   2              return 1;
+  24   2          }
+  25   1          else
+  26   1          {
+  27   2              /* 否则返回 0 */
+  28   2              return 0;
+  29   2          }
+  30   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     29    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

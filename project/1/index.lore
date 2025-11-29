@@ -1,0 +1,15 @@
++ lib #prelude
+  + delay
+    int async_k2_delay_ms(unsigned int t) #lib/key
+    void delay_ms(unsigned int t)
+
+  + key
+    int k1_on() #lib/delay
+    int k2_on() #lib/delay
+    int k3_on() #lib/delay
+    int k4_on() #lib/delay
+  
+  + display
+    int mode_1_join() #lib/key
+    int mode_2_join() #lib/delay
+    int mode_3_join() #lib/delay

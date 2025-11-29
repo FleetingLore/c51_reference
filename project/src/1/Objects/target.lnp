@@ -1,5 +1,0 @@
-".\Objects\delay.obj",
-".\Objects\main.obj" 
-TO ".\Objects\target" 
-PRINT(".\Listings\target.m51") RAMSIZE(256) 
-DISABLEWARNING (16) 

@@ -1,0 +1,47 @@
+C51 COMPILER V9.60.7.0   MODE_3                                                            11/29/2025 10:23:45 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MODE_3
+OBJECT MODULE PLACED IN .\Objects\mode_3.obj
+COMPILER INVOKED BY: D:\C51\BIN\C51.EXE lib\display\mode_3.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\mode_3.lst) OBJECT(.\Objects\mode_3.obj)
+
+line level    source
+
+   1          /**
+   2           * @file lib/display/mode_3.c
+   3           * @author FleetingLore macro__9@outook.com
+   4           * @brief 所有灯亮起，3 秒后全部熄灭
+   5           * @date 2025-11-29
+   6          */
+   7          #include "prelude.h"
+   8          #include "lib/delay/delay.h"
+   9          
+  10          /**
+  11           * @return 正常退出时返回 3
+  12           */
+  13          int mode_3_join() {
+  14   1          /* 所有灯亮起 */
+  15   1          D_OFF = 0x00;
+  16   1      
+  17   1          /* 两秒后熄灭 */
+  18   1          delay_ms(2000);
+  19   1          D_OFF = 0xFF;
+  20   1          
+  21   1          /* 正常退出 */
+  22   1          return 3;
+  23   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     18    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,66 @@
+C51 COMPILER V9.60.7.0   MODE_1                                                            11/29/2025 10:23:45 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MODE_1
+OBJECT MODULE PLACED IN .\Objects\mode_1.obj
+COMPILER INVOKED BY: D:\C51\BIN\C51.EXE lib\display\mode_1.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\mode_1.lst) OBJECT(.\Objects\mode_1.obj)
+
+line level    source
+
+   1          /**
+   2           * @file lib/display/mode_1.c
+   3           * @author FleetingLore macro__9@outook.com
+   4           * @brief LED 模块以两个为一组从左向右移位，按一次移两位
+   5           * @date 2025-11-29
+   6          */
+   7          #include "prelude.h"
+   8          #include "lib/key/key.h"
+   9          
+  10          /**
+  11           * @return 按下 K4 时返回 1
+  12           */
+  13          int mode_1_join()
+  14          {
+  15   1          int ROOT = 0x03;       /* 创世灯位 */
+  16   1          int ip = 0;            /* 初始偏移为 0 */
+  17   1          D_OFF = ~(ROOT << ip); /* D1 和 D2 一开始就亮 */
+  18   1                  
+  19   1          while (1)
+  20   1          {
+  21   2              /* 按下 K1 时移动灯位 */
+  22   2              if (k1_on())
+  23   2              {
+  24   3                  /* 饱和返回 */
+  25   3                  if (ip == 6)
+  26   3                  {
+  27   4                      continue;
+  28   4                  }
+  29   3                          
+  30   3                  /* 点亮灯位右移 */
+  31   3                  ip += 2;
+  32   3                  D_OFF = ~(ROOT << ip);
+  33   3              }
+  34   2      
+  35   2              /* 按下 K4 时返回 */
+  36   2              if (k4_on())
+  37   2              {
+  38   3                  D_OFF = 0xFF;
+  39   3                  return 1;
+  40   3              }
+  41   2          }
+  42   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     86    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

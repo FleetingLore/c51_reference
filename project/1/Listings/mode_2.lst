@@ -1,0 +1,84 @@
+C51 COMPILER V9.60.7.0   MODE_2                                                            11/29/2025 10:23:45 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MODE_2
+OBJECT MODULE PLACED IN .\Objects\mode_2.obj
+COMPILER INVOKED BY: D:\C51\BIN\C51.EXE lib\display\mode_2.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\mode_2.lst) OBJECT(.\Objects\mode_2.obj)
+
+line level    source
+
+   1          /**
+   2           * @file lib/display/mode_2.c
+   3           * @author FleetingLore macro__9@outook.com
+   4           * @brief LED 模块从左向右亮，按照先奇后偶的顺序亮起
+   5           *        后灯亮前灯灭，一直循环，时间间隔 0.5 秒
+   6           *        再次按下 K2 停止，跳出循环。（1-3-5-7-2-4-6-8）
+   7           * @date 2025-11-29
+   8          */
+   9          #include "prelude.h"
+  10          #include "lib/delay/delay.h"
+  11          
+  12          /**
+  13           * @return 按下 K2 时返回 2
+  14           */
+  15          int mode_2_join() {
+  16   1          while (1)
+  17   1          {
+  18   2              /* `D1` 亮 */
+  19   2              D1_OFF = 0;
+  20   2              if (async_delay_ms_for_k2(500)) return 2;
+  21   2              D1_OFF = 1;
+  22   2              
+  23   2              /* `D3` 亮 */
+  24   2              D3_OFF = 0;
+  25   2              if (async_delay_ms_for_k2(500)) return 2;
+  26   2              D3_OFF = 1;
+  27   2              
+  28   2              /* `D5` 亮 */
+  29   2              D5_OFF = 0;
+  30   2              if (async_delay_ms_for_k2(500)) return 2;
+  31   2              D5_OFF = 1;
+  32   2              
+  33   2              /* `D7` 亮 */
+  34   2              D7_OFF = 0;
+  35   2              if (async_delay_ms_for_k2(500)) return 2;
+  36   2              D7_OFF = 1;
+  37   2              
+  38   2              /* `D2` 亮 */
+  39   2              D2_OFF = 0;
+  40   2              if (async_delay_ms_for_k2(500)) return 2;
+  41   2              D2_OFF = 1;
+  42   2              
+  43   2              /* `D4` 亮 */
+  44   2              D4_OFF = 0;
+  45   2              if (async_delay_ms_for_k2(500)) return 2;
+  46   2              D4_OFF = 1;
+  47   2      
+  48   2              /* `D6` 亮 */
+  49   2              D6_OFF = 0;
+  50   2              if (async_delay_ms_for_k2(500)) return 2;
+  51   2              D6_OFF = 1;
+  52   2      
+  53   2              /* `D8` 亮 */
+  54   2              D8_OFF = 0;
+C51 COMPILER V9.60.7.0   MODE_2                                                            11/29/2025 10:23:45 PAGE 2   
+
+  55   2              if (async_delay_ms_for_k2(500)) return 2;
+  56   2              D8_OFF = 1;
+  57   2          }
+  58   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    142    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

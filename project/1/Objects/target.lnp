@@ -1,0 +1,13 @@
+".\Objects\main.obj",
+".\Objects\k1_on.obj",
+".\Objects\k2_on.obj",
+".\Objects\k3_on.obj",
+".\Objects\k4_on.obj",
+".\Objects\mode_1.obj",
+".\Objects\mode_2.obj",
+".\Objects\mode_3.obj",
+".\Objects\async_delay_ms_for_k2.obj",
+".\Objects\delay_ms.obj" 
+TO ".\Objects\target" 
+PRINT(".\Listings\target.m51") RAMSIZE(256) 
+DISABLEWARNING (16) 
